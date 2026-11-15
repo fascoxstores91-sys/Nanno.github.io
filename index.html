@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Naila ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+/* GIFT SCREEN */
+
+#gift-screen{
+    height:100vh;
+    width:100%;
+    background:#000;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.gift{
+    font-size:140px;
+    cursor:pointer;
+    animation:bounce 2s infinite;
+    transition:all .4s ease;
+
+    filter:
+    drop-shadow(0 0 10px #ff4d8d)
+    drop-shadow(0 0 20px #ff4d8d)
+    drop-shadow(0 0 40px #ff4d8d);
+}
+
+.gift:hover{
+    transform:scale(1.15);
+}
+
+.gift-text{
+    color:white;
+    margin-top:20px;
+    font-size:22px;
+    letter-spacing:2px;
+}
+
+@keyframes bounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-20px);
+    }
+}
+
+/* LOVE SCREEN */
+
+#love-screen{
+    display:none;
+    min-height:100vh;
+    background:linear-gradient(135deg,#ffd1dc,#ff9eb5);
+    padding:40px 20px;
+    overflow:hidden;
+    position:relative;
+}
+
+.message{
+    max-width:900px;
+    margin:40px auto;
+    background:rgba(255,255,255,.92);
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(0,0,0,.2);
+}
+
+.message h1{
+    color:#ff2d75;
+    margin-bottom:25px;
+}
+
+.message p{
+    font-size:18px;
+    line-height:1.9;
+    color:#444;
+    white-space:pre-line;
+}
+
+/* HEARTS */
+
+.heart{
+    position:absolute;
+    animation:floatUp 8s linear forwards;
+}
+
+@keyframes floatUp{
+
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+}
+
+/* PHOTOS */
+
+.gallery{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+    margin-top:50px;
+}
+
+.photo{
+    width:250px;
+    height:320px;
+    object-fit:cover;
+    border-radius:20px;
+    border:6px solid white;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+    opacity:0;
+    animation:showPhoto 2s forwards;
+}
+
+.photo:nth-child(1){
+    animation-delay:1s;
+}
+
+.photo:nth-child(2){
+    animation-delay:2s;
+}
+
+.photo:nth-child(3){
+    animation-delay:3s;
+}
+
+.photo:nth-child(4){
+    animation-delay:4s;
+}
+
+@keyframes showPhoto{
+    from{
+        opacity:0;
+        transform:translateY(80px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* FLOWERS */
+
+.flower{
+    position:absolute;
+    font-size:40px;
+    animation:spin 8s linear infinite;
+}
+
+.flower1{
+    top:10%;
+    left:5%;
+}
+
+.flower2{
+    top:15%;
+    right:5%;
+}
+
+.flower3{
+    bottom:10%;
+    left:8%;
+}
+
+.flower4{
+    bottom:15%;
+    right:8%;
+}
+
+@keyframes spin{
+
+    from{
+        transform:rotate(0);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+/* FINAL MESSAGE */
+
+.final-message{
+    text-align:center;
+    margin:80px 0;
+    color:#fff;
+    font-size:34px;
+    font-weight:bold;
+    text-shadow:0 0 20px rgba(255,255,255,.7);
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="gift-screen">
+
+    <div class="gift" onclick="openGift()">🎁</div>
+
+    <div class="gift-text">
+        A Special Gift For Naila ❤️
+    </div>
+
+</div>
+
+<div id="love-screen">
+
+<div class="flower flower1">🌸</div>
+<div class="flower flower2">🌷</div>
+<div class="flower flower3">🌹</div>
+<div class="flower flower4">🌺</div>
+
+<div class="message">
+
+<h1>Happy Birthday Naila ❤️</h1>
+
+<p id="loveLetter"></p>
+
+</div>
+
+<div class="gallery">
+
+<img src="1.jpeg" class="photo">
+<img src="2.jpeg" class="photo">
+<img src="3.jpeg" class="photo">
+<img src="4.jpeg" class="photo">
+
+</div>
+
+<div class="final-message">
+    Naila, I'd choose you again and again,
+    every single time. ❤️
+</div>
+
+</div>
+
+<script>
+
+function playMagicSound() {
+
+    const audioContext =
+        new(window.AudioContext ||
+            window.webkitAudioContext)();
+
+    const oscillator =
+        audioContext.createOscillator();
+
+    const gainNode =
+        audioContext.createGain();
+
+    oscillator.connect(gainNode);
+
+    gainNode.connect(audioContext.destination);
+
+    oscillator.type = "sine";
+
+    oscillator.frequency.setValueAtTime(
+        523.25,
+        audioContext.currentTime
+    );
+
+    oscillator.frequency.exponentialRampToValueAtTime(
+        1046.5,
+        audioContext.currentTime + 0.6
+    );
+
+    gainNode.gain.setValueAtTime(
+        0.3,
+        audioContext.currentTime
+    );
+
+    gainNode.gain.exponentialRampToValueAtTime(
+        0.001,
+        audioContext.currentTime + 0.6
+    );
+
+    oscillator.start();
+
+    oscillator.stop(
+        audioContext.currentTime + 0.6
+    );
+}
+
+function typeLetter(){
+
+const text = `My Dearest Naila,
+
+Today is your special day, and I wanted to create something that reminds you just how much you mean to me.
+
+You have brought happiness into my life in ways I could never fully explain. Your smile brightens my days, your voice comforts my heart, and every moment spent with you becomes a memory I treasure forever.
+
+Thank you for being my best friend, my happiness, and the person who makes everything feel more beautiful.
+
+No matter how many words I write, they will never be enough to describe how much I love you.
+
+Happy Birthday, my beautiful Naila.
+
+I love you more than yesterday and less than tomorrow. ❤️`;
+
+let i = 0;
+
+function typing(){
+
+if(i < text.length){
+
+document.getElementById("loveLetter").innerHTML +=
+text.charAt(i);
+
+i++;
+
+setTimeout(typing,35);
+
+}
+
+}
+
+typing();
+
+}
+
+function openGift(){
+
+document.getElementById("gift-screen").style.display="none";
+
+document.getElementById("love-screen").style.display="block";
+
+playMagicSound();
+
+createHearts();
+
+typeLetter();
+
+}
+
+function createHearts(){
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"%";
+
+heart.style.fontSize=
+(20+Math.random()*25)+"px";
+
+document.getElementById("love-screen")
+.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},8000);
+
+},250);
+
+}
+
+</script>
+
+</body>
+</html>
